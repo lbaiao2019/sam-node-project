@@ -4,7 +4,7 @@ on:
 
 jobs:
   test:
-    name: npm test
+    name: test
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -16,5 +16,5 @@ jobs:
     - name: Run container
       run: docker run -dt -p 9000:8080 test
 
-    - name: runtime interface emulator
+    - name: Runtime emulator
       run: curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'

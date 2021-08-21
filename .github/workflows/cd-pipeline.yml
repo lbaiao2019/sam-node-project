@@ -1,7 +1,9 @@
 name: CD Pipeline
 on:
   workflow_dispatch:
-
+  push:    
+    branches: [master]
+    
 env:
   SERVICE: resize
   TF_VERSION: 0.14.0

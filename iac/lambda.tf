@@ -1,27 +1,20 @@
-module "lambda_function" {
-  source = "terraform-aws-modules/lambda/aws"
-
-  runtime       = var.runtime
-  function_name = "${local.service_name}-lambda"
-  handler       = "index.lambdaHandler"
-  publish       = true
-  lambda_role   = aws_iam_role.default.arn
-
-  local_existing_package = "./tmp/code.zip"
+resource "aws_lambda_function" "default" {
+  function_name    = "${local.service_name}-lambda"
+  role             = aws_iam_role.default.arn
+  handler          = "index.lambdaHandler"
+  publish          = true
+  runtime          = var.runtime
+  filename         = local.filename
+  source_code_hash = filebase64sha256(local.filename)
 
   layers = [
     aws_lambda_layer_version.layer.arn
   ]
 
-  allowed_triggers = {
-    APIGatewayAny = {
-      statement_id = "AllowExecutionFromAPIGateway"
-      principal    = "apigateway.amazonaws.com"
+  environment {
+    variables = {
+      S3_BUCKET = "${local.service_name}-bucket"
     }
-  }
-
-  environment_variables = {
-    S3_BUCKET = "${local.service_name}-bucket"
   }
 
   tags = {
@@ -31,6 +24,13 @@ module "lambda_function" {
     envname      = local.envname
     versioning   = local.versioning
   }
+}
+
+resource "aws_lambda_permission" "default" {
+  function_name = aws_lambda_function.default.function_name
+  action        = "lambda:InvokeFunction"
+  statement_id  = "AllowExecutionFromAPIGateway"
+  principal     = "apigateway.amazonaws.com"
 }
 
 resource "aws_iam_role" "default" {
@@ -52,7 +52,6 @@ resource "aws_iam_role" "default" {
 }
 EOF
 }
-
 
 data "aws_iam_policy_document" "default" {
   statement {

@@ -4,4 +4,6 @@ locals {
   managed_by   = var.managed_by
   envname      = var.envname
   versioning   = var.versioning
+
+  filename = "/tmp/code.zip"
 }

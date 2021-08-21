@@ -118,6 +118,6 @@ jobs:
       - name: Terraform plan 
         continue-on-error: false
         run: |
-          pwd
+          ls /tmp/code.zip
           cd ./iac
           make plan 'ENVNAME=${{ matrix.environment }}' 'REGION=${{ matrix.region }}'

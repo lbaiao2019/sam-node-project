@@ -1,53 +1,21 @@
 name: CI Pipeline
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
   pull_request:
+
 jobs:
-  unit:
+  test:
     name: npm test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm ci
-      - run: npm test
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-  integ:
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-20.04
-    name: ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: "3.8"
+    - name: Build docker image
+      run: docker build -t test .
 
-      - uses: ./
-        with:
-          version: "1.18.2"
-      - run: sam --version | grep -F 1.18.2
+    - name: Run container
+      run: docker run -p 9000:8080 test
 
-      - uses: ./
-      - run: |
-          version=$(curl https://pypi.org/pypi/aws-sam-cli/json | jq -r .info.version)
-          sam --version | grep -F "$version"
-        shell: bash
-
-      - run: sam init --name sam-app --runtime nodejs14.x --dependency-manager npm --app-template hello-world
-
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "14"
-      - run: sam build
-        working-directory: ./sam-app
-
-      - if: startsWith(matrix.os, 'ubuntu')
-        run: sam build --use-container
-        working-directory: ./sam-app
+    - name: runtime interface emulator
+      run: curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'

@@ -1,7 +1,7 @@
-name: CD Pipeline
+name: "CD Pipeline"
 on:
   workflow_dispatch:
-  push:    
+  push:
     branches: [ main ]
 
 env:
@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout source code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Install Node.js Version - ${{ matrix.node-version }}
         uses: actions/setup-node@v2

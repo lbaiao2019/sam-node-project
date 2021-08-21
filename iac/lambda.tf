@@ -8,7 +8,7 @@ resource "aws_lambda_layer_version" "layer" {
 resource "aws_lambda_function" "default" {
   function_name    = "${local.service_name}-lambda"
   role             = aws_iam_role.default.arn
-  handler          = "index.lambdaHandler"
+  handler          = "app.lambdaHandler"
   publish          = true
   runtime          = var.runtime
   filename         = local.filename_codebase

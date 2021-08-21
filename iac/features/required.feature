@@ -30,7 +30,7 @@ Scenario Outline: Ensure lambda is created
     | key     | value               |
     | publish | true                |
     | runtime | nodejs14.x          |
-    | handler | index.lambdaHandler |
+    | handler | app.lambdaHandler |
 
 Scenario Outline: Ensure that specific tags are defined
   Given I have resource that supports tags defined

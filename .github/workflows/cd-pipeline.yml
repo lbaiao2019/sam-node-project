@@ -59,7 +59,7 @@ jobs:
           retention-days: 1
 
   terraform:
-    name: iac
+    name: deploy iac and code
     strategy:
       fail-fast: true
       matrix:

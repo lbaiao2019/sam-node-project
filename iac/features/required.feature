@@ -34,17 +34,17 @@ Scenario Outline: Must contain attributes
     | role                |
     | tags                |
 
-  Scenario Outline: Ensure that specific tags are defined
-    Given I have resource that supports tags defined
-    When it has tags
-    Then it must contain tags
-    Then it must contain <tags>
-    And its value must match the "<value>" regex
+Scenario Outline: Ensure that specific tags are defined
+  Given I have resource that supports tags defined
+  When it has tags
+  Then it must contain tags
+  Then it must contain <tags>
+  And its value must match the "<value>" regex
 
-    Examples:
-      | tags         | value              |
-      | owner        | .+                 |
-      | service_name | .+                 |
-      | managed_by   | .+                 |
-      | environment  | .+                 |
-      | versioning   | .+                 |
+  Examples:
+    | tags         | value              |
+    | owner        | .+                 |
+    | service_name | .+                 |
+    | managed_by   | .+                 |
+    | environment  | .+                 |
+    | versioning   | .+                 |

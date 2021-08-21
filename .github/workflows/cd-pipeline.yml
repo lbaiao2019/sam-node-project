@@ -1,8 +1,12 @@
 name: "CD Pipeline"
+
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    branches: [main]
+    types:
+      - completed
 
 env:
   SERVICE: resize
@@ -28,15 +32,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: npm
 
-      - name: npm install
+      - name: Install modules
         run: |
           npm install
 
-      - name: zip modules
+      - name: Zip modules
         run: |
           zip -r /tmp/node_modules.zip node_modules/
 
-      - name: zip code base
+      - name: Zip code base
         run: |
           zip -r /tmp/code.zip *.js *.json
 

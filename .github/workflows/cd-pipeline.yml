@@ -35,7 +35,7 @@ jobs:
 
       - name: Zip modules
         run: |
-          zip -r /tmp/node_modules.zip node_modules/
+          zip -r /tmp/node_modules.zip node_modules/*
 
       - name: Zip code base
         run: |

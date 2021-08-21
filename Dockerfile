@@ -1,7 +1,8 @@
-FROM public.ecr.aws/sam/build-nodejs14.x
+FROM public.ecr.aws/lambda/nodejs:14
 
-COPY app.js parser.js package*.json ./
+COPY app.js parser.js package*.json  /var/task/
 
+# Install NPM dependencies for function
 RUN npm install
 
-CMD ["app.lambdaHandler"]
+CMD [ "app.lambdaHandler" ] 

@@ -7,7 +7,7 @@ module "lambda_function" {
   publish       = true
   lambda_role   = aws_iam_role.default.arn
 
-  local_existing_package = "/tmp/code.zip"
+  local_existing_package = "./tmp/code.zip"
 
   layers = [
     aws_lambda_layer_version.layer.arn

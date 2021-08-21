@@ -51,3 +51,21 @@ variable "filename_codebase" {
   type        = string
   default     = "/tmp/code.zip"
 }
+
+variable "path_part" {
+  description = "The last path segment of this API resource."
+  type        = string
+  default     = "image"
+}
+
+variable "http_method" {
+  description = "The HTTP Method (GET, POST, PUT, DELETE, HEAD, OPTIONS, ANY)."
+  type        = string
+  default     = "POST"
+}
+
+variable "stage_name" {
+  description = "The name of the stage. If the specified stage already exists, it will be updated to point to the new deployment. If the stage does not exist, a new one will be created and point to this deployment."
+  type        = string
+  default     = ""
+}

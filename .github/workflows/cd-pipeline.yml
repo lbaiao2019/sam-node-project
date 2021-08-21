@@ -33,7 +33,6 @@ jobs:
 
       - name: zip modules
         run: |
-          cd node_modules
           zip -r /tmp/node_modules.zip node_modules/
 
       - name: zip code base

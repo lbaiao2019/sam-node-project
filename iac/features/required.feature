@@ -29,7 +29,7 @@ Scenario Outline: Ensure lambda is created
   Examples:
     | key     | value               |
     | publish | true                |
-    | runtime | nodejs14.x          |
+    | runtime | nodejs12.x          |
     | handler | app.lambdaHandler |
 
 Scenario Outline: Ensure that specific tags are defined

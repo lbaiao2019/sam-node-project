@@ -10,7 +10,7 @@ on:
 env:
   SERVICE: resize
   TF_VERSION: 0.14.0
-  NODE_VERSION: 12.x
+  NODE_VERSION: 12
 
 jobs:
   test:

@@ -6,7 +6,7 @@ variable "owner" {
 
 variable "service_name" {
   type        = string
-  default     = "leonardo-resize-image"
+  default     = "aircall-resize-image"
   description = "Identify the service name, this is likely the same as the repo name"
 }
 

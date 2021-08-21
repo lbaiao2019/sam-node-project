@@ -19,7 +19,7 @@ Scenario Outline: Ensure s3 bucket is created
   Examples:
     | key    | value                        |
     | acl    | private                      |
-    | bucket | leonardo-resize-image-bucket |
+    | bucket | aircall-resize-image-bucket |
 
 Scenario Outline: Ensure lambda is created
   Given I have aws_lambda_function defined

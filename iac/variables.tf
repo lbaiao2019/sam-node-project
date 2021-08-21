@@ -39,3 +39,15 @@ variable "runtime" {
   type        = string
   default     = "nodejs14.x"
 }
+
+variable "filename_module" {
+  description = "Module nodejs"
+  type        = string
+  default     = "/tmp/node_modules.zip"
+}
+
+variable "filename_codebase" {
+  description = "codebase nodejs"
+  type        = string
+  default     = "/tmp/code.zip"
+}

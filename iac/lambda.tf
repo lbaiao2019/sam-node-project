@@ -1,11 +1,18 @@
+resource "aws_lambda_layer_version" "layer" {
+  layer_name          = local.service_name
+  compatible_runtimes = [var.runtime]
+  filename            = local.filename_module
+  source_code_hash    = base64sha256(local.filename_module)
+}
+
 resource "aws_lambda_function" "default" {
   function_name    = "${local.service_name}-lambda"
   role             = aws_iam_role.default.arn
   handler          = "index.lambdaHandler"
   publish          = true
   runtime          = var.runtime
-  filename         = local.filename
-  source_code_hash = base64sha256(local.filename)
+  filename         = local.filename_codebase
+  source_code_hash = base64sha256(local.filename_codebase)
 
   layers = [
     aws_lambda_layer_version.layer.arn

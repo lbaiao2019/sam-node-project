@@ -27,7 +27,9 @@ jobs:
       run: docker run -dt -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} -p 9000:8080 ${{ env.SERVICE }} 
 
     - name: Runtime emulator
-      run: curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'
+      run: |
+        cd test/
+        curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}' --form 'file=@image.jpg' --form 's3Key=image.jpg'
 
   build:
     name: build
@@ -51,7 +53,9 @@ jobs:
 
       - name: Zip modules
         run: |
-          zip -r /tmp/node_modules.zip node_modules/
+          mkdir nodejs
+          mv node_modules/ nodejs/
+          zip -r /tmp/node_modules.zip nodejs/
 
       - name: Zip code base
         run: |

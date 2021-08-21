@@ -1,7 +1,6 @@
 name: CI Pipeline
 on:
   workflow_dispatch:
-  pull_request:
 
 jobs:
   test:
@@ -15,7 +14,7 @@ jobs:
       run: docker build -t test .
 
     - name: Run container
-      run: docker run -p 9000:8080 test
+      run: docker run -dt -p 9000:8080 test
 
     - name: runtime interface emulator
       run: curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'

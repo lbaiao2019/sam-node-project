@@ -5,7 +5,7 @@ locals {
   envname      = var.envname
   versioning   = var.versioning
 
-  filename_module = var.filename_module
+  filename_module   = var.filename_module
   filename_codebase = var.filename_codebase
 
   stage_name = var.envname

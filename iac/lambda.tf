@@ -14,6 +14,8 @@ resource "aws_lambda_function" "default" {
   runtime          = var.runtime
   filename         = local.filename_codebase
   source_code_hash = base64sha256(local.filename_codebase)
+  memory_size      = 512
+  timeout          = 600
 
   layers = [
     aws_lambda_layer_version.layer.arn

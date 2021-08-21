@@ -107,7 +107,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ matrix.region }}
           role-duration-seconds: 1200
-          role-session-name: ${{ matrix.environment }}-${{ matrix.environment }}-session
+          role-session-name: ${{ matrix.environment }}-${{ matrix.region }}-session
           role-skip-session-tagging: true
 
       - name: Install Terraform Version
@@ -119,4 +119,4 @@ jobs:
         continue-on-error: false
         run: |
           cd ./iac
-          make plan 'ENVNAME=${{ matrix.environment }}' 'REGION=${{ matrix.environment }}'
+          make plan 'ENVNAME=${{ matrix.environment }}' 'REGION=${{ matrix.region }}'

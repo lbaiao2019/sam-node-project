@@ -80,13 +80,13 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: modules-resize
-          path: /tmp/node_modules.zip
+          path: /tmp
 
       - name: Download artifact code base
         uses: actions/download-artifact@v2
         with:
           name: codebase-resize
-          path: /tmp/code.zip
+          path: /tmp
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1

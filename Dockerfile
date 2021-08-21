@@ -1,4 +1,4 @@
-FROM public.ecr.aws/lambda/nodejs:14
+FROM public.ecr.aws/lambda/nodejs:12
 
 COPY app.js parser.js package*.json  /var/task/
 

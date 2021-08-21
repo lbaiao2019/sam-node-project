@@ -37,7 +37,7 @@ variable "aws_region" {
 variable "runtime" {
   description = "Runtime Node"
   type        = string
-  default     = "nodejs14.x"
+  default     = "nodejs12.x"
 }
 
 variable "filename_module" {

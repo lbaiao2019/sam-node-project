@@ -10,7 +10,7 @@ on:
 env:
   SERVICE: resize
   TF_VERSION: 0.14.0
-  NODE_VERSION: 14.x
+  NODE_VERSION: 12.x
 
 jobs:
   test:
@@ -27,9 +27,7 @@ jobs:
       run: docker run -dt -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} -p 9000:8080 ${{ env.SERVICE }} 
 
     - name: Runtime emulator
-      run: |
-        cd test/
-        curl  --location --request POST "http://localhost:9000/2015-03-31/functions/function/invocations" --form "file=@image.jpg" --form "s3Key=image.jpg"
+      run: curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}' 
 
   build:
     name: build

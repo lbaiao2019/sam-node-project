@@ -86,7 +86,7 @@ data "aws_iam_policy_document" "default" {
     ]
     effect = "Allow"
     resources = [
-      "arn:aws:s3:::${local.service_name}/*",
+      "arn:aws:s3:::${local.service_name}-bucket/*",
     ]
   }
 }

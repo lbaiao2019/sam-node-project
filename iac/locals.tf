@@ -5,5 +5,5 @@ locals {
   envname      = var.envname
   versioning   = var.versioning
 
-  filename = "./tmp/code.zip"
+  filename = "/tmp/code.zip"
 }

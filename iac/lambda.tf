@@ -5,7 +5,7 @@ resource "aws_lambda_function" "default" {
   publish          = true
   runtime          = var.runtime
   filename         = local.filename
-  source_code_hash = filebase64sha256(local.filename)
+  source_code_hash = base64sha256(local.filename)
 
   layers = [
     aws_lambda_layer_version.layer.arn

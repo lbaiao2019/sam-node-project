@@ -115,9 +115,18 @@ jobs:
         with:
           terraform_version: ${{ env.TF_VERSION }}
 
+      - name: Terraform install compliance
+        run: |
+          pip3 install terraform-compliance==1.3.24
+
       - name: Terraform plan 
         continue-on-error: false
         run: |
-          ls /tmp/code.zip
           cd ./iac
           make plan 'ENVNAME=${{ matrix.environment }}' 'REGION=${{ matrix.region }}'
+
+      - name: Terraform complaince 
+        continue-on-error: false
+        run: |
+          cd ./iac
+          make test_terraform_compliance 'ENVNAME=${{ matrix.environment }}' 'REGION=${{ matrix.region }}'

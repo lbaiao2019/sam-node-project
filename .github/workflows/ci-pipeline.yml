@@ -116,7 +116,7 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       - name: Terraform plan 
-        continue-on-error: true
+        continue-on-error: false
         run: |
           cd ./iac
-          make plan 'ENVNAME=${{ env.ENVNAME }}' 'REGION=${{ env.REGION }}'
+          make plan 'ENVNAME=${{ matrix.ENVNAME }}' 'REGION=${{ matrix.REGION }}'

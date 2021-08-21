@@ -1,7 +1,7 @@
 name: "CD Pipeline"
 on:
   workflow_dispatch:
-  push:
+  pull_request:
     branches: [ main ]
 
 env:
@@ -10,7 +10,7 @@ env:
 
 jobs:
   build:
-    name: build lambda
+    name: build
     strategy:
       matrix:
         node-version: [14.x]
@@ -53,8 +53,8 @@ jobs:
           path: /tmp/code.zip
           retention-days: 1
 
-  deploy:
-    name: deploy lambda
+  terraform:
+    name: iac
     strategy:
       fail-fast: true
       matrix:
@@ -99,8 +99,7 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       - name: Terraform plan 
-        continue-on-error: true
+        continue-on-error: false
         run: |
           cd ./iac
-          make plan 'ENVNAME=${{ env.ENVNAME }}' 'REGION=${{ env.REGION }}'
-
+          make plan 'ENVNAME=${{ matrix.ENVNAME }}' 'REGION=${{ matrix.REGION }}'

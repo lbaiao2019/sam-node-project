@@ -23,7 +23,7 @@ resource "aws_api_gateway_integration" "default" {
   http_method = aws_api_gateway_method.default.http_method
   uri         = aws_lambda_function.default.arn
   type        = "AWS_PROXY"
-
+  integration_http_method = var.http_method
 }
 
 

@@ -10,7 +10,7 @@ env:
 
 jobs:
   test:
-    name: Test
+    name: test
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -26,13 +26,13 @@ jobs:
       run: curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'
 
   build:
-    name: "Build application"
+    name: build
     strategy:
       matrix:
         node-version: [14.x]
 
     runs-on: ubuntu-latest
-    needs: Test
+    needs: test
 
     steps:
       - name: Checkout source code
@@ -71,7 +71,7 @@ jobs:
           retention-days: 1
 
   terraform:
-    name: "Terraform test"
+    name: iac
     strategy:
       fail-fast: true
       matrix:
@@ -81,7 +81,7 @@ jobs:
           region: us-east-1
 
     runs-on: ubuntu-latest
-    needs: "Build application"
+    needs: build
 
     steps:
 

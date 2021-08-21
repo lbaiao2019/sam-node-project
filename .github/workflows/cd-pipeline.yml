@@ -102,5 +102,5 @@ jobs:
         continue-on-error: true
         run: |
           cd ./iac
-          make plan 'REGION=${{ env.REGION }}' 'ENVNAME=${{ env.ENVNAME }}'
+          make plan 'ENVNAME=${{ env.ENVNAME }}' 'REGION=${{ env.REGION }}'
 

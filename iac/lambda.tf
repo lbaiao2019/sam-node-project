@@ -78,11 +78,15 @@ data "aws_iam_policy_document" "default" {
 
   statement {
     actions = [
+      "s3:DeleteObjectTagging",
       "s3:PutObject",
+      "s3:GetObjectAcl",
       "s3:GetObject",
-      "s3:AbortMultipartUpload",
-      "s3:DeleteObject",
-      "s3:ListMultipartUploadParts"
+      "s3:DeleteObjectVersion",
+      "s3:PutObjectVersionTagging",
+      "s3:GetObjectTagging",
+      "s3:PutObjectTagging",
+      "s3:DeleteObject"
     ]
     effect = "Allow"
     resources = [

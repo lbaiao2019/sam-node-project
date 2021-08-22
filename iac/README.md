@@ -133,11 +133,12 @@ CD Pipeline will build, and deploy IaC and application.
 
 <br />![Sample Pipeline](https://github.com/lbaiao2019/sam-node-project/blob/main/_doc/cd-pipeline.png)
 
-Prerequisites: Create these variables in ci-pipeline
+Prerequisites: Create these variables in cd-pipeline
 ```
   SERVICE: resize  -- service name
   TF_VERSION: 0.14.0  -- terraform version
-  NODE_VE
+  NODE_VERSION: 14 -- node version
+```
 
 Workflow: https://github.com/lbaiao2019/sam-node-project/actions/workflows/cd-pipeline.yml
 

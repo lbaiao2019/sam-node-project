@@ -27,8 +27,8 @@ jobs:
       run: docker run -dt -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} -p 9000:8080 ${{ env.SERVICE }} 
 
     - name: Runtime emulator
-      run: curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}' 
-
+      run: curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d "@test/payload.json"
+      
   build:
     name: build
 

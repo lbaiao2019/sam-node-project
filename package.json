@@ -10,10 +10,10 @@
   "dependencies": {
     "aws-sdk": "^2.662.0",
     "busboy": "^0.3.1",
-    "sharp": "^0.29.0"
+    "sharp": "^0.25.2"
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^6.8.0"
   },
   "scripts": {
     "deploy": "serverless deploy"

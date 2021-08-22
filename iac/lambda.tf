@@ -44,7 +44,7 @@ resource "aws_lambda_permission" "default" {
 }
 
 resource "aws_iam_role" "default" {
-  name = "${local.service_name}_role"
+  name = "${local.service_name}-role"
 
   assume_role_policy = <<EOF
 {
@@ -78,26 +78,17 @@ data "aws_iam_policy_document" "default" {
 
   statement {
     actions = [
-      "s3:DeleteObjectTagging",
-      "s3:PutObject",
-      "s3:GetObjectAcl",
-      "s3:GetObject",
-      "s3:DeleteObjectVersion",
-      "s3:PutObjectVersionTagging",
-      "s3:GetObjectTagging",
-      "s3:PutObjectTagging",
-      "s3:DeleteObject"
+      "s3:*",
     ]
     effect = "Allow"
     resources = [
       "arn:aws:s3:::${local.service_name}-bucket/*",
-      "arn:aws:s3:::${local.service_name}-bucket",
     ]
   }
 }
 
 resource "aws_iam_policy" "default" {
-  name   = "${local.service_name}_policy"
+  name   = "${local.service_name}-policy"
   policy = data.aws_iam_policy_document.default.json
 }
 

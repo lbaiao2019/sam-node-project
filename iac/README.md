@@ -3,7 +3,7 @@
 
 [![CI Pipeline Runners](https://github.com/lbaiao2019/sam-node-project/actions/workflows/ci-pipeline.yml/badge.svg)](https://github.com/lbaiao2019/sam-node-project/actions/workflows/ci-pipeline.yml)
 
-[![CD Pipeline Runners](https://github.com/lbaiao2019/sam-node-project/actions/workflows/cd-pipeline.ymlbadge.svg)](https://github.com/lbaiao2019/sam-node-project/actions/workflows/cd-pipeline.yml)
+[![CD Pipeline Runners](https://github.com/lbaiao2019/sam-node-project/actions/workflows/cd-pipeline.yml/badge.svg)](https://github.com/lbaiao2019/sam-node-project/actions/workflows/cd-pipeline.yml)
 
 Repository containing the logic to build Iac.
 
@@ -97,6 +97,9 @@ To run the tests:
 make test ENVNAME=integration REGION=us-east-1
 ```
 
+Prerequisites: To tests must be a bucket with the name: `aircall-test-bucket` configured in the Dockerfile.
+
+
 This command will run the automated tests for this account.
 
 When all the tests pass you should see a final output similar to this:
@@ -114,6 +117,12 @@ CI Pipeline will test the application, build, and test IaC.
 We are testing the application on a docker container that will simulate the Lambda.
 <br />https://hub.docker.com/r/amazon/aws-lambda-nodejs
 
+Prerequisites: Create these variables in ci-pipeline
+```
+  SERVICE: resize  -- service name
+  TF_VERSION: 0.14.0  -- terraform version
+  NODE_VERSION: 14 -- node version
+```
 Workflow: https://github.com/lbaiao2019/sam-node-project/actions/workflows/ci-pipeline.yml
 
 * The workflow will start manually or when create a Pull Request in the repository.
@@ -123,6 +132,12 @@ Workflow: https://github.com/lbaiao2019/sam-node-project/actions/workflows/ci-pi
 CD Pipeline will build, and deploy IaC and application.
 
 <br />![Sample Pipeline](https://github.com/lbaiao2019/sam-node-project/blob/main/_doc/cd-pipeline.png)
+
+Prerequisites: Create these variables in ci-pipeline
+```
+  SERVICE: resize  -- service name
+  TF_VERSION: 0.14.0  -- terraform version
+  NODE_VE
 
 Workflow: https://github.com/lbaiao2019/sam-node-project/actions/workflows/cd-pipeline.yml
 

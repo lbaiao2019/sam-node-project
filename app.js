@@ -82,6 +82,7 @@ async function resize_image(img_buffer,size) {
                 withoutEnlargement: true
             })
             .jpeg()
+            .toBuffer()
     } catch (error) {
         console.error("Unable to resize image");
         console.error(error);

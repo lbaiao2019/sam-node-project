@@ -1,16 +1,16 @@
 # Aircall.io - DevOps technical test - IaC
 --------------------------------
 
-[![CI Pipeline Runners](https://github.com/lbaiao2019/sri-node-project/blob/main/.github/workflows/ci-pipeline.yml/badge.svg)](https://github.com/lbaiao2019/sri-node-project/blob/main/.github/workflows/ci-pipeline.yml)
+[![CI Pipeline Runners](https://github.com/lbaiao2019/sam-node-project/blob/main/.github/workflows/ci-pipeline.yml/badge.svg)](https://github.com/lbaiao2019/sam-node-project/blob/main/.github/workflows/ci-pipeline.yml)
 
-[![CD Pipeline Runners](https://github.com/lbaiao2019/sri-node-project/blob/main/.github/workflows/cd-pipeline.ymlbadge.svg)](https://github.com/lbaiao2019/sri-node-project/blob/main/.github/workflows/cd-pipeline.yml)
+[![CD Pipeline Runners](https://github.com/lbaiao2019/sam-node-project/blob/main/.github/workflows/cd-pipeline.ymlbadge.svg)](https://github.com/lbaiao2019/sam-node-project/blob/main/.github/workflows/cd-pipeline.yml)
 
 Repository containing the logic to build Iac.
 
-ℹ️ Without permissions to configure the repository to complete CI/CD workflows with the Github Actions, the repository has been cloned to https://github.com/lbaiao2019/sri-node-project
+ℹ️ Without permissions to configure the repository to complete CI/CD workflows with the Github Actions, the repository has been cloned to https://github.com/lbaiao2019/sam-node-project
 
 
-![Alt text](../_doc/image.png "AWS Resources
+![Alt text](https://github.com/lbaiao2019/sam-node-project/blob/main/_doc/image.png)
 
 
 ## Getting Started 
@@ -36,6 +36,8 @@ You have to create these secrets on the Github Repostory project.
 ----------------
 The repo currently contains logic to build, test, and deploy infrastructure and application.
 
+- Structure:
+```
 .
 ├── Dockerfile
 ├── README.md
@@ -63,7 +65,7 @@ The repo currently contains logic to build, test, and deploy infrastructure and 
     ├── cat.jpg
     ├── payload.json
     └── python.jpg
-
+```
 
 To build the resources is simply:
 ```shell script
@@ -98,7 +100,7 @@ make test ENVNAME=integration REGION=us-east-1
 This command will run the automated tests for this account.
 
 When all the tests pass you should see a final output similar to this:
-<br />![Sample Test Result](../_docs/test-result.png)
+<br />![Sample Test Result](https://github.com/lbaiao2019/sam-node-project/blob/main/_doc/test-result.png)
 
 ### GitHub Action 
 --------- 
@@ -107,7 +109,7 @@ When all the tests pass you should see a final output similar to this:
 
 CI Pipeline will test the application, build, and test IaC.
 
-<br />![Sample Pipeline](../_docs/ci_pipeline.png)
+<br />![Sample Pipeline](https://github.com/lbaiao2019/sam-node-project/blob/main/_doc/ci-pipeline.png)
 
 We are testing the application on a docker container that will simulate the Lambda.
 <br />https://hub.docker.com/r/amazon/aws-lambda-nodejs
@@ -120,7 +122,7 @@ Workflow: https://github.com/lbaiao2019/sam-node-project/actions/workflows/ci-pi
 
 CD Pipeline will build, and deploy IaC and application.
 
-<br />![Sample Pipeline](../_docs/cd_pipeline.png)
+<br />![Sample Pipeline](https://github.com/lbaiao2019/sam-node-project/blob/main/_doc/cd-pipeline.png)
 
 Workflow: https://github.com/lbaiao2019/sam-node-project/actions/workflows/cd-pipeline.yml
 

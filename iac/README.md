@@ -1,9 +1,9 @@
 # Aircall.io - DevOps technical test - IaC
 --------------------------------
 
-[![CI Pipeline Runners](https://github.com/lbaiao2019/sam-node-project/blob/main/.github/workflows/ci-pipeline.yml/badge.svg)](https://github.com/lbaiao2019/sam-node-project/blob/main/.github/workflows/ci-pipeline.yml)
+[![CI Pipeline Runners](https://github.com/lbaiao2019/sam-node-project/actions/workflows/ci-pipeline.yml/badge.svg)](https://github.com/lbaiao2019/sam-node-project/actions/workflows/ci-pipeline.yml)
 
-[![CD Pipeline Runners](https://github.com/lbaiao2019/sam-node-project/blob/main/.github/workflows/cd-pipeline.ymlbadge.svg)](https://github.com/lbaiao2019/sam-node-project/blob/main/.github/workflows/cd-pipeline.yml)
+[![CD Pipeline Runners](https://github.com/lbaiao2019/sam-node-project/actions/workflows/cd-pipeline.ymlbadge.svg)](https://github.com/lbaiao2019/sam-node-project/actions/workflows/cd-pipeline.yml)
 
 Repository containing the logic to build Iac.
 

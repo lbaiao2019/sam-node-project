@@ -32,7 +32,6 @@ resource "aws_lambda_function" "default" {
     service_name = local.service_name
     managed_by   = local.managed_by
     envname      = local.envname
-    versioning   = local.versioning
   }
 }
 
